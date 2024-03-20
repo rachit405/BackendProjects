@@ -1,0 +1,117 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+.menu{
+  margin-top: 50px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.card{
+  height:350px ;
+  width:500px ;
+  margin: 4px;
+}
+
+.pizzacard{
+  height: 200px;
+  margin: 4px;
+}
+
+
+.name-price{
+  width: 25%;
+  /* background-color: red; */
+  flex-direction: column;
+}
+
+.pizza-name{
+  height: 30%;
+  /* background-color: orange; */
+}
+
+.pizza-type{
+  height: 30%;
+  /* background-color: lavender ; */
+}
+
+.pizza-price{
+  height: 40%;
+  /* background-color: greenyellow ; */
+}
+
+
+
+.info{
+  width: 50%;
+  /* background-color: purple; */
+}
+
+.image-add{
+  width: 25%;
+  /* background-color: blue; */
+  flex-direction: column;
+}
+
+.pizza-image{
+  height: 50%;
+  /* background-color:pink ; */
+}
+
+img{
+  width: 100%;
+  height: 100%;
+}
+.pizza-but{
+  height: 50%;
+  /* background-color:yellow ; */
+  margin: 4px;
+}
+
+.image-add button {
+  background-color: orange;
+  color: rgb(245, 245, 245);
+  border: none;
+  border-radius: 4px;
+  padding-top:5px;
+  margin: 4px;
+ 
+}

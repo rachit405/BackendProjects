@@ -1,0 +1,39 @@
+.navbar1{
+    color: grey;
+    padding: 2px;
+    background-color: black;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+}
+.navdiv{
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.navlinks{
+    justify-content: space-between;
+    gap:20px;
+    align-items: center;
+}
+.navlinks a{
+    text-decoration: none;
+    color: white;
+}
+.navlinks a:hover{
+    text-decoration: none;
+    color: rgb(198, 197, 197);
+}
+
+.navcart button {
+    background-color: orange;
+    color: rgb(245, 245, 245);
+    border: none;
+    border-radius: 4px;
+    padding-top:5px;
+    margin-right: 25px;
+}
+#logo{
+    height: 60px;
+    width: 70px;
+}
