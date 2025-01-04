@@ -1,5 +1,23 @@
+using FluentValidation;
+using WebApp_FluentValidation.Controllers;
+using WebApp_FluentValidation.Models;   
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using FluentValidation.AspNetCore;
+using System.Reflection;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
+//builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly , includeInternalTypes: true);
+/*builder.Services.AddControllers().AddFluentValidation( fv => {
+    fv.AutomaticValidationEnabled = false;
+    fv.RegisterValidatorsFromAssembly(typeof(Program).Assembly , includeInternalTypes : true);
+}); */
+builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -13,6 +31,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
+
+//app.UseAuthorization();
+
+app.MapControllers(); // Maps attributes routes like [Route]
+
+//app.MapControllers();
 
 var summaries = new[]
 {
