@@ -1,6 +1,7 @@
 
-using System.Threading.RateLimiting;
+//using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.RateLimiting;
+using Rate_Limiter.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,17 @@ builder.Services.AddControllers();
 
 // Rate Limiter for users based on IP Address
 
+// registering my custom mddleware
+
+builder.Services.AddSingleton<FixedWindowRateLimiterMiddleware>(provider => 
+{
+    var next = provider.GetRequiredService<RequestDelegate>();
+
+    // Create and return the middleware instance with parameters like rate limit and time window
+    return new FixedWindowRateLimiterMiddleware(next, 10, TimeSpan.FromMinutes(1));
+});
+
+/*
 builder.Services.AddRateLimiter(options =>{
     options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
     options.AddPolicy<string>("fixedIP", httpContext =>
@@ -25,6 +37,7 @@ builder.Services.AddRateLimiter(options =>{
     });
 });
 
+*/
 
 /* // Added a RateLimiter service for all users, to make it user specific we need to add a user identifier eg. IP address
 builder.Services.AddRateLimiter(options =>
@@ -49,7 +62,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 app.MapControllers();
-app.UseRateLimiter();
+//app.UseRateLimiter();
+app.UseMiddleware<FixedWindowRateLimiterMiddleware>(5, TimeSpan.FromSeconds(20));
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -67,7 +81,7 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 })
-.WithName("GetWeatherForecast").RequireRateLimiting("fixedIP");
+.WithName("GetWeatherForecast");
 
 app.Run();
 

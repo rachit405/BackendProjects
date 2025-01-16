@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.RateLimiting;
 
 namespace Rate_Limiter.Controllers
 {
-    [EnableRateLimiting("fixedIP")]
+    //[EnableRateLimiting("fixedIP")]
     [ApiController]
     [Route("api/[controller]")]
     public class RateLimiterController : ControllerBase
